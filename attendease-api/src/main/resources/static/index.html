@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>attendEase</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap">
+  <h1>attend<span>Ease</span></h1>
+  <p>Mark class attendance and track it over time.</p>
+  <nav role="tablist">
+    <button role="tab" data-tab="setup" aria-selected="true">Classes and students</button>
+    <button role="tab" data-tab="mark" aria-selected="false">Mark attendance</button>
+    <button role="tab" data-tab="report" aria-selected="false">Reports</button>
+  </nav>
+</div></header>
+
+<main><div class="wrap">
+
+<section id="setup" class="on">
+  <div class="grid">
+    <div class="card">
+      <h2>Add a classroom</h2>
+      <label for="cName">Classroom name</label><input id="cName" placeholder="CSE-A">
+      <label for="cTeacher">Teacher name</label><input id="cTeacher" placeholder="Ravi">
+      <button class="btn" id="addClass">Add classroom</button>
+    </div>
+    <div class="card">
+      <h2>Add a student</h2>
+      <label for="sName">Student name</label><input id="sName" placeholder="Anu">
+      <label for="sRoll">Roll number</label><input id="sRoll" placeholder="101">
+      <label for="sClass">Classroom</label><select id="sClass"></select>
+      <button class="btn" id="addStudent">Add student</button>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Students in a classroom</h2>
+    <select id="listClass"></select>
+    <div id="studentList"></div>
+  </div>
+</section>
+
+<section id="mark">
+  <div class="card">
+    <div class="row">
+      <div><label for="mClass">Classroom</label><select id="mClass"></select></div>
+      <div><label for="mDate">Date</label><input type="date" id="mDate"></div>
+      <button class="btn" id="loadMark">Load students</button>
+    </div>
+  </div>
+  <div class="card" id="markCard" hidden>
+    <h2 id="markTitle">Attendance</h2>
+    <table><thead><tr><th>Roll</th><th>Name</th><th>Status</th></tr></thead><tbody id="markBody"></tbody></table>
+    <div class="foot">
+      <button class="btn sec" id="allPresent">Mark everyone present</button>
+      <button class="btn" id="saveMark" style="margin-top:0">Save attendance</button>
+    </div>
+  </div>
+</section>
+
+<section id="report">
+  <div class="card">
+    <div class="row">
+      <div><label for="rClass">Classroom</label><select id="rClass"></select></div>
+      <button class="btn" id="loadReport">Show report</button>
+    </div>
+  </div>
+  <div class="card" id="reportCard" hidden>
+    <h2>Attendance summary</h2>
+    <table><thead><tr><th>Roll</th><th>Name</th><th>Present</th><th>Absent</th><th>Attendance</th></tr></thead><tbody id="reportBody"></tbody></table>
+    <p style="color:var(--mute);font-size:14px;margin:12px 0 0">Students below 75% are highlighted.</p>
+  </div>
+</section>
+
+</div></main>
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
